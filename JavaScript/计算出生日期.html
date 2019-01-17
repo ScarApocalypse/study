@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>arguments</title>
+</head>
+<body>
+<script>
+  //出生年份获取函数
+  function getbirday(type){
+  	switch (type) {
+  		case "year":
+  			// 获取年份
+  			var year=prompt("请输入您的出生年份");
+  			while(isNaN(year)||year<1900||year>2018){
+  				year=prompt("您的输入有误，请重新输入出生年份");
+  			}
+  			return parseInt(year);
+  		case "month":
+  			// 获取月份
+  			var month=prompt("请输入您的出生月份");
+  			while(isNaN(month)||month<0||month>12){
+  				month=prompt("您的输入有误，请重新输入出生月份");
+  			}
+  			return parseInt(month);
+  		case "day":
+  			// 获取日期
+  			var day=prompt("请输入您的出生日期");
+  			while(isNaN(day)||day<0||day>31){
+  				day=prompt("您的输入有误，请重新输入出生日期");
+  			}
+  			return parseInt(day);
+  	}
+  }
+  //闰年判断
+  function isLeapYear(year){
+  	return (!(year%4)&&year%100)||(!(year%100)&&!(year%400))?true:false;
+  }
+  //日期计算
+  function birthdayCount(year,month,day){
+  	var sum=0,mon=1;
+
+  	switch (month) {
+  		case 12:
+  		  sum+=30;
+  		case 11:
+  		  sum+=31;
+  		case 10:
+  		  sum+=30;
+  		case 9:
+  		  sum+=31;
+  		case 8:
+  		  sum+=31;
+  		case 7:
+  		  sum+=30;
+  		case 6:
+  		  sum+=31;
+  		case 5:
+  		  sum+=30;
+  		case 4:
+  		  sum+=31;
+  		case 3:
+		  sum+=isLeapYear(year)?29:28;
+  		case 2:
+  		  sum+=31; 
+  		case 1:
+  		  sum+=day;                  							
+  	}
+  	return sum;
+  }
+
+  
+  var year=getbirday("year");
+  var month=getbirday("month");
+  var day=getbirday("day");
+  document.write("您的生日是"+year+"年第"+birthdayCount(year,month,day)+"天");
+
+</script>
+</body>
+</html>

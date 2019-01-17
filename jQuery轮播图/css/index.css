@@ -1,0 +1,75 @@
+/*body{
+	background: #ccc;
+	font-family: Microsoft YaHei;
+}*/
+*{
+	margin:0;
+	padding:0;
+}
+img{
+	display: none;
+}
+.slide{
+	position: relative;
+	left: 50%;
+	margin-left:-600px;
+	display: inline-block;
+
+}
+h2{
+	
+	text-align: center;
+	margin: 40px 0;
+}
+.imgBox{
+	display: inline-block;
+	border: 10px solid #bbb;
+}
+.active{
+	display:block;
+}
+.preBtn img,.nextBtn img{
+	display: block;
+}
+.preBtn,
+.nextBtn	
+{
+	left:10px;
+	top:50%;
+	position: absolute;
+	margin-top: -35px;
+	/*background: #000;*/
+	text-align: center;
+	padding:20px 10px;
+	cursor:pointer;
+}
+.nextBtn{
+	left:auto;
+	right:10px;
+}
+.dotBox{
+	right: 30px;
+	bottom: 40px;
+	position: absolute;
+}
+.dotBox ul{
+	overflow: hidden;
+}
+.dotBox ul li{
+	width: 15px;
+	height: 15px;
+	background: gray;
+	float: left;
+	list-style: none;
+	margin:0 5px;
+	border-radius: 50%;
+	border:2px solid #fff;
+	cursor: pointer;
+}
+.dotBox ul .checked{
+	border:2px solid gray;
+	background: #fff;
+}
+.btnHover{
+	background: rgba(0,0,0,0.4);
+}
