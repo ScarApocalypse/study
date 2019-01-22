@@ -1,0 +1,45 @@
+.filter{
+    min-height: 100px;
+    background-color: #fbfbfb;
+    margin:20px auto;
+}
+.filter .group{
+    padding:15px 60px 15px 180px;
+    color:#4c4948;
+    font-size:12px;
+    line-height: 18px;
+    min-height:30px;
+    position: relative;
+}
+.filter .group .caption{
+    position: absolute;
+    left: 30px;
+    top: 21px;
+    width: 150px;
+}
+.filter .group .condition{
+   color:#4c4948;
+   display: inline-block;
+   position: relative;
+   margin:6px 24px 6px 0px;
+   padding:0 5px;
+}
+.filter .group .caption .condition{
+    position: absolute;
+    right:0;
+    top: -6px;
+}
+.filter .group .caption .condition::before,
+.filter .group .condition::after{
+    content:'';
+    display: block;
+    width: 1px;
+    height: 18px;
+    background: #dcdddd;
+    position: absolute;
+    top:0;
+    right:-12px;
+}
+.filter .group .caption .condition::before{
+    left:-12px;
+}
