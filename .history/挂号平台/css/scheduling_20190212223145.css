@@ -1,0 +1,51 @@
+.scheduling{
+    width: 1000px;
+    height: 382px;
+    overflow: hidden;
+}
+.scheduling .left{
+    height: 317px;
+    width: 34px;
+    position: absolute;
+    left:0;
+    top:35px;
+    background:skyblue;
+}
+.scheduling .right{
+    height: 325px;
+    width: 34px;
+    position: absolute;
+    right:270px;
+    top:0;
+    background:skyblue;
+}
+.scheduling .rule{
+    width: 270px;
+    height: 325px;
+    position: absolute;
+    right:0;
+    top:0;
+    /* background: #666; */
+}
+.scheduling .bottom{
+    height: 65px;
+    width: 100%;
+    position: absolute;
+    bottom:0;
+    text-align: center;
+    line-height: 65px;;
+}
+.scheduling .bottom img{
+    display: block;
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    left:395px;
+}
+.scheduling .time{
+    height: 90px;
+    line-height: 90px;
+}
+.scheduling .rule .rule-caption{
+    background: #fff;
+}

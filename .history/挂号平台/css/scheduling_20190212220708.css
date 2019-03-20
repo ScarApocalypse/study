@@ -1,0 +1,13 @@
+.scheduling{
+    width: 1000px;
+    height: 390px;
+    background: skyblue;
+}
+.scheduling .left{
+    height: 325px;
+    width: 40px;
+    position: absolute;
+    left:0;
+    top:0;
+    background: #000;
+}

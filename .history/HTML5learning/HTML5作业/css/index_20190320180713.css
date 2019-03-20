@@ -1,0 +1,27 @@
+*{
+    margin:0;
+    padding:0;
+}
+a{
+    text-decoration: none;
+}
+header{
+    height: 95px;
+    width: 100%;
+    background: #2e2e2e;
+}
+header > .container{
+    width: 1600px;
+    margin:0 auto;
+    line-height: 95px;
+}
+header > .container > a.logo{
+    float: left;
+    margin-top:10px;
+}
+header > .container > nav{
+    float:right;
+}
+header > .container > nav > a{
+    color:#fff;
+}

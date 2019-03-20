@@ -1,0 +1,85 @@
+.scheduling{
+    width: 996px;
+    height: 417px;
+    overflow: hidden;
+}
+.scheduling .left{
+    height: 317px;
+    width: 34px;
+    position: absolute;
+    left:0;
+    top:35px;
+    background:skyblue;
+    box-sizing: border-box;
+    border:1px solid #ccc;
+    font-size:12px;
+}
+.scheduling .right{
+    height: 317px;
+    width: 34px;
+    position: absolute;
+    right:270px;
+    top:35px;
+    background:skyblue;
+}
+.scheduling .rule{
+    width: 270px;
+    height: 325px;
+    position: absolute;
+    right:0;
+    top:35px;
+    /* background: #666; */
+}
+.scheduling .bottom{
+    height: 65px;
+    width: 100%;
+    position: absolute;
+    bottom:0px;
+    text-align: center;
+    line-height: 65px;;
+}
+.scheduling .bottom img{
+    display: block;
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    left:395px;
+}
+.scheduling .time{
+    height: 90px;
+    line-height: 90px;
+}
+.scheduling .rule .rule-caption{
+    background: #fff;
+}
+.scheduling .scheduling-caption{
+    margin-left:15px;
+    font-size:18px;
+}
+.scheduling .scheduling-caption .back{
+    font-size:14px;
+    color:#00b3ec;
+    margin-left:20px;
+    cursor: pointer;
+}
+.scheduling .schedule{
+    position: absolute;
+    left:34px;
+    top:35px;
+}
+.scheduling .schedule .schedule-item{
+    width: 94px;
+    height: 317px;
+}
+.scheduling .schedule .schedule-item .time{
+    height: 90px;
+    line-height: 90px;
+    text-align: center;
+}
+.scheduling .schedule .schedule-item .day{
+    height: 47px;
+    text-align: center;
+}
+.scheduling .schedule .schedule-item .time .afternoon{
+    background: #00b3ec;
+}
