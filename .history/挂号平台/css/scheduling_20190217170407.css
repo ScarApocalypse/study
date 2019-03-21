@@ -1,0 +1,60 @@
+.scheduling{
+    width: 996px;
+    height: 417px;
+    overflow: hidden;
+    /* display: inline-block; */
+    position: relative;
+    background:lightyellow;
+    margin-top:100px;
+    border:1px solid red;
+    /* z-index:-1; */
+}
+.scheduling img{
+    margin-top:-1px;
+}
+.scheduling .con-left{
+    width: 34px;
+    height: 300px;
+    background:skyblue;
+    border:1px solid #ccc;
+    /* float: left; */
+    position: absolute;
+   
+    margin:-1px 0 0 -1px;
+}
+.scheduling .con-middle{
+    position: absolute;
+    /* border:1px solid #ccc; */
+    left:35px;
+    top:-1px;
+}
+.scheduling .con-middle .schedule-item{
+    float: left;
+   width: 99px;
+   margin-left:-1px;
+}
+.scheduling .con-middle .schedule-item .date{
+    height: 45px;
+    border:1px solid #ccc;
+}
+.scheduling .con-middle .schedule-item .morning,
+.scheduling .con-middle .schedule-item .afternoon,
+.scheduling .con-middle .schedule-item .night
+{
+
+
+}
+.scheduling .rule{
+    border:1px solid #ccc;
+    height: 300px;
+    position: absolute;
+    right:-1px;
+    top:-1px;
+    
+}
+.scheduling .rule .rule-caption{
+    background: #fff;
+}
+.scheduling .rule .rule-content{
+    height: 300px;
+}

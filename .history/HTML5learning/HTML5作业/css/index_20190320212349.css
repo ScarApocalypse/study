@@ -1,0 +1,202 @@
+*{
+    margin:0;
+    padding:0;
+    list-style: none;
+}
+body{
+    height: 3000px;
+    font-family:Microsoft YaHei UI;
+}
+a{
+    text-decoration: none;
+}
+.clearfix:after{
+    content:"";
+    height: 0;
+    line-height: 0;
+    display: block;
+    visibility: hidden;
+    clear:both;
+}
+.clearfix{
+    zoom:1;
+}
+/* 顶部区域 */
+header{
+    height: 95px;
+    width: 100%;
+    background: #2e2e2e;
+}
+header > .container{
+    width: 1600px;
+    margin:0 auto;
+    line-height: 95px;
+}
+header > .container > a.logo{
+    float: left;
+    margin-top:7px;
+}
+header > .container > nav{
+    float:right;
+}
+header > .container > nav > a{
+    float: left;
+    color:#fff;
+    margin-left:50px;
+}
+/* banner区域 */
+.banner{
+    height: 675px;
+    width: 100%;
+    background:url(../img/banner.jpg) no-repeat center;
+    background-size: cover;
+    color:#fff;
+    /* overflow: hidden; */
+}
+.banner > .container{
+    width: 850px;
+    margin:0 auto;
+    text-align: center;
+    padding-top:280px;
+    
+}
+.banner > .container > article > h1{
+    font-size:57px;
+    
+}
+.banner > .container > article > p{
+    font-size:16px;
+    line-height: 1.5em;
+}
+/* Portfolio区域 */
+.Team,
+.Contact,
+.Stats,
+.Portfolio{
+    width: 100%;
+    /* height: 410px; */
+    overflow: hidden;
+    text-align: center;
+}
+.Contact > .container,
+.Team > .container,
+.Stats > .container,
+.Portfolio > .container{
+    width: 700px;
+    margin:0 auto;
+    text-align: center;
+
+}
+.Contact > .container > aside >h1,
+.Team > .container > aside >h1,
+.Stats > .container > aside >h1,
+.Portfolio > .container > aside >h1{
+    color:#f46208;
+    font-size:34px;
+    font-weight:500;
+    margin:110px 0 50px;
+}
+.Contact > .container > article >p,
+.Team > .container > article >p,
+.Stats > .container > article >p,
+.Portfolio > .container > article >p{
+    font-size:14px;
+    font-weight: 500;
+    margin-bottom:72px;
+    line-height: 1.5em;
+}
+.Contact > .container > article > ul.keyWord,
+.Team > .container > article > ul.keyWord,
+.Stats > .container > article > ul.keyWord,
+.Portfolio > .container > article > ul.keyWord{
+    display: inline-block;
+    margin-bottom:50px;
+}
+.Contact > .container > article > ul.keyWord >li,
+.Team > .container > article > ul.keyWord >li,
+.Stats > .container > article > ul.keyWord >li,
+.Portfolio > .container > article > ul.keyWord >li{
+    float: left;
+    /* width: 60px; */
+    height: 40px;
+    border:1px solid #f46208;
+    text-align: center;
+    line-height: 40px;
+    margin:0 16px;
+    font-size:16px;
+    padding:0 10px;
+    color:#f46208;
+}
+.Contact > .container > article > ul.keyWord >li:hover
+.Team > .container > article > ul.keyWord >li:hover
+.Stats > .container > article > ul.keyWord >li:hover
+.Portfolio > .container > article > ul.keyWord >li:hover{
+    background: #f46208;
+    color:#fff;
+    cursor: pointer;
+}
+.portfolio-nav{
+    background: url(../img/portfolio-nav-img.jpg) no-repeat center;
+    background-size: cover;
+    height: 560px;
+    width: 100%;
+}
+/* Stats区域 */
+.Stats{
+    text-align: center;
+}
+.Stats > .stats-icon{
+   display: inline-block;
+   margin-bottom:115px;
+}
+.Stats > .stats-icon > .item{
+   
+    width: 145px;
+    /* height: 160px; */
+    float: left;
+    margin:0 35px;
+}
+.Stats > .stats-icon > .item >.name{
+    margin:15px 0;
+    font-size:16px;
+}
+.Stats > .stats-icon > .item >.number{
+    font-size:25px;
+    color:#f46208;
+}
+/* TEAM区域 */
+.Team{
+    background: #2e2e2e;
+    color:#fff;
+    text-align: center;
+}
+.Team > .workerInfo{
+    display: inline-block;
+    text-align: center;
+    margin-bottom:100px;
+}
+.Team > .workerInfo > .item{
+    width: 240px;
+    margin:0 60px;
+    float: left;
+}
+.Team > .workerInfo > .item img{
+    width: 200px;
+    height: 200px;
+}
+.Team > .workerInfo > .item > .name{
+    font-size:12px;
+}
+.Team > .workerInfo > .item > .detail{
+    font-size:9px;
+}
+/* contact区域 */
+.Contact >form{
+    display: inline-block;
+}
+.Contact >form > .item > input[type="text"],
+.Contact >form > .item > input[type="email"]{
+    display: inline-block;
+    width: 200px;
+}
+

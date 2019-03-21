@@ -1,0 +1,19 @@
+.filter{
+    min-height: 100px;
+    background-color: #fbfbfb;
+    margin:20px auto;
+}
+.filter .group{
+    padding:15px 60px 15px 180px;
+    color:#4c4948;
+    font-size:12px;
+    line-height: 18px;
+    min-height:30px;
+    position:absolute;
+}
+.filter .group .caption{
+    position: absolute;
+    left: 30px;
+    top: 21px;
+    width: 150px;
+}

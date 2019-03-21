@@ -1,0 +1,16 @@
+.scheduling{
+    /* width: 996px; */
+    height: 417px;
+    overflow: hidden;
+    /* display: inline-block; */
+    position: relative;
+    background:lightyellow;
+    margin-top:100px;
+}
+.scheduling .con-left{
+    width: 34px;
+    height: 300px;
+    background:skyblue;
+    border:1px solid #ccc;
+    float: left;
+}

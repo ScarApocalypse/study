@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  
+    <title>Document</title>
+    <script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+</head>
+<body>
+        <input type="text" name="username">
+     <input type="text" name="sex">
+     <input type="button" value="Post">
+     <script language="javascript" >
+     function Post()
+     {
+     //单个值 Read.htm?username=baobao;
+        //多全值 Read.htm?username=baobao&sex=male;
+        　　url = "Read.htm?username="+escape(document.all.username.value);
+        　　url += "&sex=" + escape(document.all.sex.value);
+        　　location.href=url;
+        }
+        </script>
+</body>
+</html>

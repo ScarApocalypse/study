@@ -1,0 +1,12 @@
+.hospitalDetail{
+    height: 260px;
+    background:#f7f7f7;  
+    margin-top:32px;
+    /* padding-left:250px */
+    padding:0 25px;
+}
+.hospitalDetail .hospitalDetail-title{
+    height: 52px;
+    line-height: 52px;
+    border-bottom:1px solid #e2e2e2;
+}

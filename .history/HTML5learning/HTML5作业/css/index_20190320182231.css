@@ -1,0 +1,59 @@
+*{
+    margin:0;
+    padding:0;
+    list-style: none;
+}
+body{
+    height: 2000px;
+    font-style:Microsoft YaHei UI;
+}
+a{
+    text-decoration: none;
+}
+/* 顶部区域 */
+header{
+    height: 95px;
+    width: 100%;
+    background: #2e2e2e;
+}
+header > .container{
+    width: 1600px;
+    margin:0 auto;
+    line-height: 95px;
+}
+header > .container > a.logo{
+    float: left;
+    margin-top:7px;
+}
+header > .container > nav{
+    float:right;
+}
+header > .container > nav > a{
+    float: left;
+    color:#fff;
+    margin-left:50px;
+}
+/* banner区域 */
+.banner{
+    height: 675px;
+    width: 100%;
+    background:url(../img/banner.jpg) no-repeat center;
+    background-size: cover;
+}
+/* Portfolio区域 */
+.Portfolio{
+    width: 100%;
+    height: 410px;
+}
+.Portfolio > .container{
+    width: 780px;
+    margin:0 auto;
+    text-align: center;
+}
+.Portfolio > .container > aside >h1{
+    color:#f46208;
+    font-size:34px;
+}
+.Portfolio > .container > article >p{
+    font-size:12px;
+}
