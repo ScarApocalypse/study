@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        .flag {
+            width: 300px;
+            height: 200px;
+            background: red;
+            margin: 20px auto;
+        }
+
+        .star {
+            width: 0;
+            height: 0;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+            border-bottom: 70px solid yellow;
+            transform: rotate(35deg);
+            position: relative;
+
+        }
+
+        .star::before {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+            border-bottom: 70px solid yellow;
+            position: absolute;
+            top: 0;
+            left: -94px;
+            transform: rotate(75deg);
+        }
+
+        .star::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+            border-bottom: 70px solid yellow;
+            transform: rotate(-70deg);
+            position: absolute;
+            left: -100px;
+            top: 0;
+        }
+
+        .star-first {
+            transform: scale(0.4) translate(-80px, 65px) rotate(35deg);
+        }
+
+        .star-second {
+            transform: scale(0.1) translate(300px, -800px);
+        }
+
+        .star-third {
+            transform: scale(0.1) translate(500px, -1200px);
+        }
+
+        .star-fourth {
+            transform: scale(0.1) translate(500px, -1600px);
+        }
+
+        .star-fifth {
+            transform: scale(0.1) translate(300px, -2000px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flag">
+        <div class="star star-first"></div>
+        <div class="star star-second"></div>
+        <div class="star star-third"></div>
+        <div class="star star-fourth"></div>
+        <div class="star star-fifth"></div>
+    </div>
+</body>
+
+</html>

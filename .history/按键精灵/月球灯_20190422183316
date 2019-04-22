@@ -1,0 +1,804 @@
+
+DimEnv del//延时时间
+DimEnv pdel//按键延时 
+Dimenv num
+Dimenv path
+Dimenv filePath
+DimEnv savePath
+num = 10
+del=Form1.InputBox1.Text
+pdel = Form1.InputBox4.Text
+num = Form1.InputBox6.Text
+path = Form1.BrowseBox1.Path
+filePath = Form1.BrowseBox2.Path
+savePath = Form1.BrowseBox3.Path
+
+TracePrint del
+TracePrint pdel
+
+TracePrint num
+TracePrint path
+TracePrint filePath
+TracePrint savePath
+
+
+
+
+Dimenv size1, size2, size3, size4, size5, size6, size7, size8
+size1 =Form1.size1.Text
+size2 = Form1.size2.Text
+size3 = Form1.size3.Text
+size4 = Form1.size4.Text
+size5 = Form1.size5.Text
+size6 = Form1.size6.Text
+size7 = Form1.size7.Text
+size8 = Form1.size8.Text
+
+
+Dimenv inchOut1, inchOut2, inchOut3, inchOut4, inchOut5, inchOut6, inchOut7, inchOut8
+inchOut1 = Form1.inchOut1.Text
+inchOut2=Form1.inchOut2.Text
+inchOut3=Form1.inchOut3.Text
+inchOut4=Form1.inchOut4.Text
+inchOut5=Form1.inchOut5.Text
+inchOut6=Form1.inchOut6.Text
+inchOut7=Form1.inchOut7.Text
+inchOut8=Form1.inchOut8.Text
+
+
+DimEnv inchIn1,inchIn2,inchIn3,inchIn4,inchIn5,inchIn6,inchIn7,inchIn8
+inchIn1 = Form1.inchIn1.Text
+inchIn2 = Form1.inchIn2.Text
+inchIn3 = Form1.inchIn3.Text
+inchIn4 = Form1.inchIn4.Text
+inchIn5 = Form1.inchIn5.Text
+inchIn6 = Form1.inchIn6.Text
+inchIn7 = Form1.inchIn7.Text
+inchIn8 = Form1.inchIn8.Text
+
+Dimenv xyz1, xyz2, xyz3, xyz4, xyz5, xyz6, xyz7, xyz8
+xyz1 = Form1.xyz1.Text
+xyz2 = Form1.xyz2.Text
+xyz3 = Form1.xyz3.Text
+xyz4 = Form1.xyz4.Text
+xyz5 = Form1.xyz5.Text
+xyz6 = Form1.xyz6.Text
+xyz7 = Form1.xyz7.Text
+xyz8 = Form1.xyz8.Text
+TracePrint "尺寸    外圈     内圈     xyz大小"
+TracePrint size1 & "丨" & inchOut1 & "丨" & inchIn1 & "丨" & xyz1
+TracePrint size2 & "丨" & inchOut2 & "丨" & inchIn2 & "丨" & xyz2
+TracePrint size3 & "丨" & inchOut3 & "丨" & inchIn3 & "丨" & xyz3
+TracePrint size4 & "丨" & inchOut4 & "丨" & inchIn4 & "丨" & xyz4
+TracePrint size5 & "丨" & inchOut5 & "丨" & inchIn5 & "丨" & xyz5
+TracePrint size6 & "丨" & inchOut6 & "丨" & inchIn6 & "丨" & xyz6
+TracePrint size7 & "丨" & inchOut7 & "丨" & inchIn7 & "丨" & xyz7
+TracePrint size8 & "丨" & inchOut8 & "丨" & inchIn8 & "丨" & xyz8
+Dimenv inchInOffset
+inchInOffset=Form1.inchInOffest1.Text
+inchInOffset=inchInOffset+0
+
+Dimenv isOpen
+isOpen = Form1.ComboBox1.ListIndex
+DimEnv softDelay//软件打开需要时间
+softDelay = Form1.softDelay.Text
+TracePrint "软件打开需要时间"&softDelay
+DimEnv stuckOpen
+stuckOpen=Form1.ComboBox2.ListIndex
+TracePrint "软件是否打开" & isOpen
+TracePrint "卡屏判断是否打开"&stuckOpen
+Function cutStr(str,del)
+	a=str
+	c=len(a)
+	TracePrint c
+
+	Dim b(10) //定义的值要大于a串的长度
+	For i=1 to c
+
+	b(i) = Mid(a, i, 1)
+	//a为串，i为起始位置，1表示一个字符
+	Delay del
+	KeyPress b(i),1 //分别按下每一个字符
+Next 
+End Function
+
+//Call cutStr(inchout1,100)
+/*Call key1("8cm",100)
+Call key1("9cm", 100)
+Call key1("10cm", 100)
+Call key1("12cm", 100)
+Call key1("15cm", 100)
+Call key1("18cm", 100)
+Call key1("20cm", 100)
+Call key1("22cm",100)
+
+Call key2("8cm", 100, inchInOffset)
+Call key2("9cm", 100, inchInOffset)
+Call key2("10cm", 100, inchInOffset)
+Call key2("12cm", 100, inchInOffset)
+Call key2("15cm", 100, inchInOffset)
+Call key2("18cm", 100, inchInOffset)
+Call key2("20cm", 100, inchInOffset)
+Call key2("22cm",100,inchInOffset)*/
+
+Function fpc(x1 ,y1 ,m1 ,n1 ,picPath,sim,offsetX,offsetY,sdel)
+	UserVar intX=0"1"
+	UserVar intY=0"1"
+	Do Until intX > 1 And intY > 1
+		FindPic x1, y1, m1, n1, "Attachment:\" & picPath, sim, intX, intY
+		
+	Loop  
+	//Delay del
+	//TracePrint intX&","&intY
+	//TracePrint offsetX&","&offsetY
+	intX = intX + offsetX
+	intY = intY + offsetY
+	
+	//TracePrint intX&","&intY
+	MoveTo intX, intY
+	Delay sdel
+	LeftClick 1
+	Delay sdel
+End Function
+Function nfpc(x1 ,y1 ,m1 ,n1 ,picPath,sim,sdel)
+	Delay sdel
+	UserVar intX=0"1"
+	UserVar intY=0"1"
+	Do Until intX < 0 And intY < 0
+		FindPic x1, y1, m1, n1, "Attachment:\" & picPath, sim, intX, intY
+		//TracePrint intX&","&intY
+		//LeftClick 1
+	Loop
+	//Delay del
+	//Delay sdel
+End Function
+Function key1(fl,del)//外圈大小按键
+	Select Case fl
+Case size1//8cm
+	/*Delay  del
+    KeyPress "3", 1
+    Delay  del
+    KeyPress ".", 1
+     Delay  del
+    KeyPress "1", 1
+     Delay  del
+    KeyPress "1", 1
+    Delay  del
+    KeyPress "", 1*/
+    Call cutStr(inchOut1,del)
+    
+Case size2//9cm
+	/*Delay  del
+    KeyPress "3", 1
+     Delay  del
+    KeyPress ".", 1
+     Delay  del
+    KeyPress "5", 1
+     Delay  del
+    KeyPress "4",1*/
+     Call cutStr(inchOut2,del)
+Case size3//10cm
+	/*Delay  del
+    KeyPress "3", 1
+     Delay  del
+    KeyPress ".", 1
+     Delay  del
+    KeyPress "9", 1
+     Delay del
+    KeyPress "0", 1*/
+    Call cutStr(inchOut3,del)
+Case size4//12cm
+	/*Delay  del
+	KeyPress "4", 1
+	 Delay  del
+    KeyPress ".", 1
+     Delay  del
+    KeyPress "7", 1
+     Delay del
+    KeyPress "0", 1*/
+     Call cutStr(inchOut4,del)
+Case size5//15cm
+	/*Delay  del	
+     KeyPress "5", 1
+      Delay  del
+    KeyPress ".", 1
+     Delay  del
+    KeyPress "8", 1
+     Delay  del
+    KeyPress "7", 1*/
+     Call cutStr(inchOut5,del)
+Case size6//18cm
+	/*Delay  del
+     KeyPress "7", 1
+      Delay  del
+    KeyPress ".", 1
+     Delay  del
+    KeyPress "0", 1
+     Delay  del
+    KeyPress "5", 1*/
+     Call cutStr(inchOut6,del)
+Case size7//20cm
+	/*Delay  del
+     KeyPress "7", 1
+     Delay  del
+    KeyPress ".", 1
+    Delay  del
+    KeyPress "6", 1
+    Delay  del
+    KeyPress "8", 1*/
+     Call cutStr(inchOut7,del)
+Case size8//22cm
+	/*Delay  del
+    KeyPress "8", 1
+    Delay  del
+    KeyPress ".", 1
+    Delay  del
+    KeyPress "5", 1
+    Delay  del
+    KeyPress "0", 1*/
+     Call cutStr(inchOut8,del)       
+       
+End Select	
+End Function
+/*Function key2(fl, del)
+	Select Case fl
+	Case "8cm"//8cm
+	Delay  del
+    KeyPress "2", 1
+    Delay  del
+    KeyPress ".", 1
+     Delay  del
+    KeyPress "9", 1
+     Delay  del
+    KeyPress "7",1
+Case "9cm"//9cm
+	Delay  del
+    KeyPress "3", 1
+     Delay  del
+    KeyPress ".", 1
+     Delay  del
+    KeyPress "3", 1
+     Delay  del
+    KeyPress "8",1
+Case "10cm"//10cm
+	Delay  del
+    KeyPress "3", 1
+     Delay  del
+    KeyPress ".", 1
+     Delay  del
+    KeyPress "7", 1
+     Delay del
+    KeyPress "4", 1
+   
+Case "12cm"//12cm
+	Delay  del
+	KeyPress "4", 1
+	 Delay  del
+    KeyPress ".", 1
+     Delay  del
+    KeyPress "5", 1
+     Delay del
+     KeyPress "1", 1
+Case "15cm"//15cm
+	Delay  del	
+     KeyPress "5", 1
+      Delay  del
+    KeyPress ".", 1
+     Delay  del
+    KeyPress "6", 1
+     Delay  del
+    KeyPress "6", 1
+Case "18cm"//18cm
+	Delay  del
+     KeyPress "6", 1
+      Delay  del
+    KeyPress ".", 1
+     Delay  del
+    KeyPress "8", 1
+     Delay  del
+    KeyPress "0", 1
+Case "20cm"//20cm
+	Delay  del
+     KeyPress "7", 1
+     Delay  del
+    KeyPress ".", 1
+    Delay  del
+    KeyPress "4", 1
+    Delay  del
+    KeyPress "4", 1
+Case "22cm"//22cm
+	Delay  del
+    KeyPress "8", 1
+    Delay  del
+    KeyPress ".", 1
+    Delay  del
+    KeyPress "2", 1
+    Delay  del
+    KeyPress "4", 1       
+       
+End Select	
+End Function*/
+Function key2(fl, del,offset)
+	Select Case fl
+		Case size1
+			a = inchIn1 + offset
+			a=CStr(a)
+			Call cutStr(a,del)
+		Case size2
+			a = inchIn2 + offset
+			a=CStr(a)
+			Call cutStr(a,del)
+		Case size3
+			a = inchIn3 + offset
+			a=CStr(a)
+			Call cutStr(a,del)
+		Case size4
+			a = inchIn4 + offset
+			a=CStr(a)
+			Call cutStr(a,del)
+		Case size5
+			a = inchIn5 + offset
+			a=CStr(a)
+			Call cutStr(a,del)
+		Case size6
+			a = inchIn6 + offset
+			a=CStr(a)
+			Call cutStr(a,del)
+		Case size7
+			a = inchIn7 + offset
+			a=CStr(a)
+			Call cutStr(a,del)
+		Case size8
+			a = inchIn8 + offset
+			a=CStr(a)
+			Call cutStr(a,del)
+	End Select
+	
+End Function
+/*Function key3(fl, del)// xyz尺寸
+	Select Case fl
+Case "8cm"//8cm
+	Delay  del
+    KeyPress "0", 1
+    Delay  del
+    KeyPress "7", 1
+     Delay  del
+    KeyPress "9", 1
+Case "9cm"//9cm
+	Delay  del
+    KeyPress "0", 1
+     Delay  del
+    KeyPress "8", 1
+     Delay  del
+    KeyPress "9", 1
+Case "10cm"//10cm
+	Delay  del
+    KeyPress "0", 1
+     Delay  del
+    KeyPress "9", 1
+     Delay  del
+    KeyPress "9", 1
+     Delay  del
+Case "12cm"//12cm
+	Delay  del
+	KeyPress "1", 1
+	 Delay  del
+    KeyPress "1", 1
+     Delay  del
+    KeyPress "9", 1
+     Delay del
+    KeyPress ".", 1
+     Delay  del
+    KeyPress "5", 1
+Case "15cm"//15cm
+	Delay  del	
+     KeyPress "1", 1
+      Delay  del
+    KeyPress "4", 1
+     Delay  del
+    KeyPress "9", 1
+     Delay  del
+Case "18cm"//18cm
+	Delay  del
+     KeyPress "1", 1
+      Delay  del
+    KeyPress "7", 1
+     Delay  del
+    KeyPress "9", 1
+Case "20cm"//20cm
+	Delay  del
+     KeyPress "1", 1
+     Delay  del
+    KeyPress "9", 1
+    Delay  del
+    KeyPress "5", 1
+Case "22cm"//22cm
+	Delay  del
+    KeyPress "2", 1
+    Delay  del
+    KeyPress "1", 1
+    Delay  del
+    KeyPress "6", 1
+ End Select       
+End Function*/
+Function key3(fl, del)
+	Select Case fl
+		Case size1
+			Call cutStr(xyz1,del)
+		Case size2
+			Call cutStr(xyz2,del)
+		Case size3
+			Call cutStr(xyz3,del)
+		Case size4
+			Call cutStr(xyz4,del)
+		Case size5
+			Call cutStr(xyz5,del)
+		Case size6
+			Call cutStr(xyz6,del)
+		Case size7
+			Call cutStr(xyz7,del)
+		Case size8
+			Call cutStr(xyz8,del)
+	End Select
+	
+End Function
+ 
+   DimEnv stuckS 
+   stuckS = Form1.stuckS.Text
+   Dimenv isShutDown
+   isShutDown = Form1.isShutDown.ListIndex
+   TracePrint "自动关机"&isShutDown
+   //iiii=101
+/*For i=1 to 50
+	Plugin.File.CopyFile "c:\a\6-323232-32131-1-20cm.psd", "c:\a\" & iiii & "A-321-1-22cm.psd"
+	iiii=iiii+1
+Next*/
+
+Private Declare Function GetKeyState Lib"user32"(ByVal nVirtKey As Long) As Integer
+If GetKeyState(20) = 0 Then KeyPress 20, 1//检测大写键是否打开，未打开则打开大写键 
+
+  Dimenv fileStr
+  Dimenv ID1
+  Dimenv ID2
+  Dimenv ID3
+  DimEnv NUMLOCK
+  ID1=BeginThread(Thread1())
+  If stuckOpen Then 
+  	 ID2=BeginThread(Thread2())
+  	 TracePrint "卡屏判断打开"
+  End If
+  //ID3=BeginThread(Thread3())
+  //下面是主线程缓冲，必须加这个无限循环
+  While 1
+      Delay 1000
+  Wend 
+
+  Sub Thread1
+  		NUMLOCK=0
+		If isOpen Then 
+		 	Form1.ComboBox1.ListIndex=0
+			Goto init	
+		End If
+  		Call fpc(0, 0, 1920, 1080, "zbrushlogo.bmp", 0.9, 10, 10, del)
+  		LeftClick 2
+		Delay 3000
+  		
+  		deleteI = 0
+  		While deleteI = 0
+  			TracePrint "1"
+  			Delay 500
+  			FindPic 0,0,1920,1080,"Attachment:\关闭.bmp",0.9,intX,intY
+			If intX > 0 And intY > 0 Then 
+			MoveTo intX + 10, intY + 10
+			Delay del
+			LeftClick 1
+			deleteI=1
+  			
+ 
+  			
+			End If
+			KeyPress "Space", 1
+  		Wend
+		MoveR 0,400
+		Delay 2000
+		//Call fpc(0, 0, 1920, 1080, "关闭.bmp", 0.9, 10, 10, del)
+		MoveTo 939, 515
+		Delay del
+		LeftClick 1
+		
+		deleteI=0
+		While deleteI = 0
+  			TracePrint "1"
+  			Delay 500
+  			FindPic 0,0,1920,1080,"Attachment:\隐藏.bmp",0.9,intX,intY
+			If intX > 0 And intY > 0 Then 
+			MoveTo intX + 10, intY + 10
+			Delay del
+			LeftClick 1
+			deleteI=1
+  			
+ 
+  			
+			End If
+			KeyPress "Space", 1
+  		Wend
+		//Call fpc(0, 0, 1920, 1080, "隐藏.bmp", 0.9, 5, 5, del)
+		
+  		Call fpc(0, 0, 1920, 1080, "SimpleBrush.bmp", 0.9, 100, 15, del)
+  		Call fpc(0, 0, 1920, 1080, "生存polymesh3D.bmp", 0.9, 10, 10, del)
+  		Call fpc(0, 0, 1920, 1080, "smallSb.bmp", 0.9, 10, -30, del)
+  		Call fpc(1672, 186, 1897, 380, "reset.bmp", 0.9, 10, 10, del)
+  		Rem mark
+  		ii = 0
+  		TracePrint del
+  		For 1000
+  			
+  			NUMLOCK=1
+  			TracePrint "第" & (ii + 1) & "个球" & num
+  			num=num+0
+  			If ii = num Then 
+  				TracePrint "关闭软件"
+  				pathArr = split(path, "\")
+				Call Lib.系统.结束进程(pathArr(Ubound(pathArr)))
+  				Delay 2000
+  				RestartScript
+  			End If
+  			//获取文件夹字符串并剪切,确定保存stl文件名
+  			fileNameArr = Lib.文件.遍历指定目录下所有文件名(filePath)
+			TracePrint fileNameArr//第一个文件的名字
+			
+			
+			TracePrint filePath
+			fileStr = fileNameArr(0)
+			strArr = split(fileStr, "-")
+			picStr=split(strArr(UBound(strArr)),".")(0)
+			TracePrint "这是一个"&picStr&"的球"
+			saveName = split(fileStr, ".")(0) & ".stl"
+			TracePrint saveName
+			psdPath=filePath & "\" & fileStr
+			stlPath = savePath& "\" & saveName
+			movePath = savePath & "\" & fileStr
+			TracePrint filePath
+			TracePrint savePath
+			TracePrint psdPath
+			TracePrint stlPath
+			TracePrint movePath
+			TracePrint fileStr
+			TracePrint flag
+			Select Case fileStr
+				Case flag
+				 StopThread ID2	
+				
+				 If isShutDown Then 
+				 	RunApp("cmd.exe") 
+					SayString("shutdown.exe -s -t 60")
+					KeyPress"Enter",1 
+					Call Lib.系统.结束进程("cmd.exe")
+				 End If
+				 MsgBox ("图片处理完毕")
+				 ExitScript
+			End Select
+			
+		
+			//ExitScript
+			//开始画球
+			flag=fileStr
+			MoveTo 686, 534//移动到画布中心
+			delay del	
+			RightDown 1
+			MoveR 100, 100
+			RightUp 1
+			Delay del
+			KeyPress "T", 1
+			Delay del
+			//Call fpc(0, 0, 1920, 1080, "edit.bmp", 0.9, 10,10,del)
+			Call fpc(0, 0, 1920, 1080, "生存polymesh3D.bmp", 0.9, 10, 10, del)
+			Call fpc(0, 0, 1920, 1080, "纹理贴图框.bmp", 0.9, 10,10,del)//纹理贴图点击
+			MoveR 0,200
+			Call fpc(1000, 0, 1500, 1080, "导入.bmp", 1, 10, 10, del)
+			
+			
+			Delay 500
+			SayString psdPath
+			
+			
+			KeyPress "Enter", 1
+			Delay del
+			MoveTo 0,0
+			Delay del+1000
+			Call fpc(0, 0, 1920, 1080, "按强度遮罩.bmp", 0.9, -90,10,del)//动态
+			For 4//快捷键划分等级5
+				Delay 200+del
+				KeyDown "Ctrl", 1
+				KeyDown "D", 1
+				KeyUp "Ctrl", 1
+			Next
+			NUMLOCK=0
+			Delay 3*del
+			Call fpc(0, 0, 1920, 1080, "XYZ大小.bmp", 0.9, 10, 10, del)
+			
+			Delay 3*del
+			Call key1(picStr, pdel)
+			Delay pdel
+			KeyPress "Enter", 1
+			
+			
+			Call fpc(0, 0, 1920, 1080, "按强度遮罩.bmp", 0.9, 10,10,del) //按强度遮罩
+			
+			Call fpc(1300, 29, 1597, 184, "大小.bmp", 0.9, 10,10,del)
+			KeyPress "-", 1
+			KeyPress "5", 1
+			KeyPress "Enter", 1
+			Call fpc(0, 0, 1920, 1080, "插入.bmp", 0.9, 10,10,del)//插入点击
+			Call fpc(0, 0, 1920, 1080, "alphabrush.bmp", 0.9,50,100,del)
+			Call fpc(0, 0, 1920, 1080, "XYZ大小.bmp", 0.9, 10, 10, del)
+			Delay del
+			Call key2(picStr, pdel, 0)
+			Delay pdel
+			KeyPress "Enter", 1
+			Call fpc(0, 0, 1920, 1080, "XYZ大小.bmp", 0.9, 10, 55, del)
+			
+			Delay del
+			Call key2(picStr,pdel,inchInOffset)
+			Delay 200+del
+			//MoveTO 1000,500
+			KeyPress "Enter", 1
+			TracePrint "ssss"
+			NUMLOCK=1
+			Delay del
+			
+			//Call fpc(1300, 29, 1597, 184, "翻转.bmp", 0.9, 10, 10, del)//点击翻转
+			Call fpc(0, 0, 1920, 1080, "按强度遮罩.bmp", 0.9, 120,80,del)
+			Call fpc(800, 0, 1920, 1080, "白球.bmp", 0.9, 50, 5, del)
+			Call fpc(0, 0, 1920, 1080, "导出到STL.bmp", 0.9, 0, 70, del)
+			Call fpc(1300, 29, 1597, 184, "向下合并.bmp", 0.9, 10, 10, del)
+			Call fpc(0, 0, 1920, 1080, "确定框.bmp", 0.9, 70, 10, del)
+			Call fpc(0, 0, 1920, 1080, "冻结边框.bmp", 0.9, 10, 10, del)
+			
+			//Delay del
+			//LeftClick 1
+			
+			Call fpc(0, 0, 1920, 1080, "当前预处理.bmp", 0.9, 30, 30, del)
+			Move 50 , 70
+			Call nfpc(10, 81,297,180, "完成判断标志.bmp",0.9,2000)
+			Call nfpc(10, 81,297,180, "编译中.bmp",0.9,1000)
+			Call fpc(0, 0, 1920, 1080, "当前预处理.bmp", 0.9, 30, 65, del)
+			MoveTo 50, 70
+			LeftClick 1
+			//Call nfpc(10, 10,487,176, "抽取当前完成标志.bmp",0.9,del)
+			//抽取当前
+			//Call fpc(10, 81,297,180, "抽取完成判断标志.bmp", 0.9, 10, 10, del)
+			//MoveTo 400,600
+			Delay 5000 + del
+			NUMLOCK=0
+			iii=0
+			For 3
+			Call fpc(0, 0, 949,155, "x(mm).bmp", 0.9, 30, 10+iii, del)
+   			Call key3(picStr,pdel)
+   			KeyPress "Enter", 1
+   			iii=iii+30
+			Next
+			NUMLOCK=1
+			Call fpc(0, 0, 1032, 170, "导出到STL.bmp", 0.9, 30, 10, del)
+			Delay del+1000
+			SayString stlPath
+			KeyPress "Enter",1
+			//KeyPress "Y", 1
+			
+			Call fpc(0, 0, 1920, 1080, "成功导出.bmp", 0.9, 30, 10, del)
+			Delay del
+			
+			Call Plugin.File.MoveFile(psdPath,movePath)//剪切已导出STL的psd文件到另一个文件夹
+			TracePrint "移动文件成功"
+			
+			Call fpc(0, 0, 1920, 1080, "当前预处理.bmp", 0.9, 30, 5, del)
+			Delay 300+del
+			KeyPress "T", 1
+			Delay del
+			KeyDown 17, 1//ctrl+N
+			KeyPress 78, 1
+			KeyUp 17, 1
+			Call fpc(0, 0, 1920, 1080, "DeepAlphaBrush.bmp", 0.9, 30, -30, del)
+			Call fpc(1672, 186, 1897, 380, "reset.bmp", 0.9, 10, 10, del)
+			ii = ii + 1
+			Delay 200+del
+			
+			Next
+	        Rem init
+	       	MoveTo 50, 50
+	       	Delay del
+	       	LeftClick 1
+	       	
+	       	FindPic 0,0,1920,1080,"Attachment:\当前预处理.bmp",0.9,intX,intY
+			If intX > 0 And intY > 0 Then 
+			MoveTo intX+30, intY+5
+			Delay del
+			LeftClick 1
+			End If
+	       	
+			IfColor 338, 212, "2690FF", 0 Then
+			TracePrint "FDFS"
+			Delay del
+			KeyPress "T",1
+			End If
+
+
+			
+			Delay del
+			KeyDown 17, 1
+			KeyPress 78, 1
+			KeyUp 17, 1
+
+	       	Call fpc(0, 0, 1920, 1080, "DeepAlphaBrush.bmp", 0.9, 30, -30, del)
+			Call fpc(1672, 186, 1897, 380, "reset.bmp", 0.9, 10, 10, del)
+  			Goto mark
+	         
+			
+			
+			
+			
+			
+			
+  End Sub 
+  Sub Thread2()
+  	TracePrint "进程2开始工作 "
+     Delay softDelay*1000
+     TracePrint "我是进程2 "
+      	//If Plugin.Color.IsDisplayDead(310,182,345,217,4000) Then 
+			//TracePrint  "卡死了"
+			While 1
+			iDead = Plugin.Color.IsDisplayDead(102, 44, 540, 225 , stuckS*1000)
+			//TracePrint iDead
+				If iDead = True Then 
+					TracePrint "软件卡死了"
+					TracePrint "关闭软件"
+					//下面这句在屏幕区域范围内截图保存到("C:\PIC.bmp")里
+					randStr = Lib.算法.随机字符串(3)
+					TracePrint savePath&fileStr&"-"&"出错"&randStr&".jpg"
+					Plugin.Pic.PrintScreen 0,0,1920,1080,savePath&"\"&fileStr&"-"&"出错"&randStr&".jpg"
+					Delay 1000
+  					pathArr = split(path, "\")
+					Call Lib.系统.结束进程(pathArr(Ubound(pathArr)))
+  					Delay 2000
+  					KeyPress "Enter", 1
+  					Delay 1000
+  					RestartScript
+				End If
+			Wend
+  End Sub 
+ Sub Thread3()
+ 	While 1
+ 		TracePrint "干扰快速保存"
+ 		If NUMLOCK Then 
+ 			KeyPress "Num Lock", 1
+ 		Delay 500
+	
+		KeyPress "Num Lock", 1
+ 		End If
+ 		
+		Delay  10000
+ 	Wend
+ End Sub
+
+
+
+
+
+//Call fpc(0, 0, 1920, 1080, "SimpleBrush.bmp", 0.7, 10, 1000)
+//call fpc(0 ,0, 1920 ,1080 ,"1.bmp",0.9,10,200)
+//MoveTo 686, 534//移动到画布中心
+//RightDown 1
+//MoveR 100, 100
+//RightUp 1
+//Delay 1000
+//call fpc(0 ,0, 1920 ,1080 ,"edit.bmp",0.9,10,200)
+//定义一个函数,可以在脚本中调用这个函数，支持参数和返回值*/
+
+
+
+
+
+
+
+
+

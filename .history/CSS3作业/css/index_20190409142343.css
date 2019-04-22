@@ -1,0 +1,7 @@
+.pic{
+    width: 1200px;
+    height: 600px;
+    border:1px solid black;
+    margin:100px auto;
+    background:-webkit-linear-gradient(rgb(196, 228, 253) 60%,#fff,rgb(148, 190, 89) 40%);
+}

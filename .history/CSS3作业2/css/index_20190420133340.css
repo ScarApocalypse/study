@@ -1,0 +1,13 @@
+*{
+    margin:0;
+    padding:0;
+}
+.sky{
+    weight:100%;
+    background: blue;
+    height:60%;
+}
+.ground{
+    background:green;
+    height:40%;
+}

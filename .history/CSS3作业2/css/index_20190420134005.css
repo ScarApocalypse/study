@@ -1,0 +1,22 @@
+
+*{
+    margin:0;
+    padding:0;
+}
+:root{
+    --skyColor: rgb(196, 228, 253);
+    --gdColor:rgb(148, 190, 89);
+}
+.sky{
+    width:100%;
+    background:var(--skyColor);
+    height:60%;
+    position:absolute;
+}
+.ground{
+    bottom:0;
+    position: absolute;
+    width:100%;
+    background:linear-gradient(#fff,var(--gdColor),);
+    height:40%;
+}
