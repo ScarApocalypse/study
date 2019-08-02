@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+            .box1{
+                position: absolute;
+                left:0px;
+                top:0px;
+                /* z-index:-1; */
+            }
+            .box2{
+                position: absolute;
+                left:0px;
+                top:0px;
+                /* z-index:-1; */
+            }
+           </style>
+    <style>
+        /* 首先清理一下内外边距 */
+        /* 然后画一个div */
+        .box2{width: 100px;height: 100px;background-color:yellow;top:300px;left:300px;}
+        .transition{transition:all 0.5s;}
+    </style>
+    
+</head>
+
+<body>
+    <div id="show"></div>
+    <div class="box1 transition">
+
+    </div>
+    <div class="box2 transition">
+
+    </div>
+    <script>
+        var show = document.getElementById('show');
+        var style = document.getElementsByTagName('style')[1];
+        console.log(style);
+        var reg = /[{};]/;
+        var str = '*{margin:0;padding:0;}body{background-color:#ccc;}.transition{transition:all 0.5s;}.box1{width:100px;height:100px;background-color:red;position:absolute;top:400px;left:400px;border-radius:50%;}.box2{width: 100px;height: 100px;background-color:yellow;top:300px;left:300px;border-radius:50%;}';
+        var styleStr = '';
+        var showStr = '';
+        // var chat="1";
+        var length = str.length;
+        var strIndex = 0;
+        var timeOut = setInterval(() => {
+            if (strIndex == length - 1) {
+                console.log(showStr);
+                clearInterval(timeOut);
+
+            }
+            styleStr += [str[strIndex]];
+            showStr += [str[strIndex]];
+            if (reg.test(str[strIndex])) {
+                showStr += '<br>';
+                if (str[strIndex + 1] != '}' && str[strIndex + 1] != '.') {
+                    showStr += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+                }
+            }
+
+            // console.log(showStr);
+            show.innerHTML = showStr;
+            style.innerHTML=styleStr;
+
+
+            strIndex++;
+        }, 50);
+    </script>
+</body>
+
+</html>

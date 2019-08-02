@@ -1,0 +1,43 @@
+<!-- <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+</head>
+<body>
+ 
+<script type="text/javascript">
+function add()
+{
+var now = new Date();
+var div = document.getElementById('scrolldIV');
+div.innerHTML = div.innerHTML + 'time_' + now.getTime() + '<br />';
+div.scrollTop = div.scrollHeight;
+}
+</script>
+<div id="scrolldIV" style="overflow:auto; height: 100px; width: 400px; border: 1px solid #999;">
+</div>
+<input type="button" value="插入一行" onclick="add();">
+用js控件div的滚动条，让它在内容更新时自动滚到底部</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+
+    // var str='123dd';
+    // var pat=/(^\d+)/g;
+    // var str="fsdbody*"
+    var str=' * { margin: 0; padding: 0; }<br> /* 给背景设置一下颜色 */ body { background-color: #ccc; } /* 添加动画效果 */ .transition { transition: all 0.5s; } /* 首先画一个红色的球 */ .box1 { width: 100px; height: 100px; background-color: red; border-radius: 50%; position: absolute; top: 400px; left: 400px; } /* 然后画一个黄色的球 */ .box2 { width: 100px; height: 100px; background-color: yellow; top: 300px; left: 300px; border-radius: 50%; } /* 淦,感觉自己好low啊 */ .box1 { left: 600px; width: 200px; height: 200px; } .box2 { left: 900px; top: 100px; width: 150px; height: 150px; }'
+    var pat=/(body|\*)/g;
+    console.log(pat.exec(str));
+    var newstr=str.replace(pat,'\$1'+"ee");
+    console.log(newstr);
+</script>
+</body>
+</html>

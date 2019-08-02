@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrap {
+
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 500px;
+            height: 700px;
+
+
+
+        }
+
+        .show {
+            position: absolute;
+            /* left: 100px; */
+            bottom: 0;
+            min-height: 700px;
+        }
+    </style>
+    <style>
+        /* 你好，我想让你看个宝贝 */
+        /* 首先清理一下内外边距 */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 给全局添加一下动画 */
+        .transition {
+            transition: all 1s;
+        }
+
+        /* 好像没有作用，一会就会看到效果了，先等等 */
+
+        /* 有没有觉得白底黑字看起来有点辣眼睛 */
+        body {
+            background-color: #333;
+        }
+
+        /* 额，字是不是有点看不清 */
+        /* 淦，忘了改字体颜色了 */
+        body {
+            color: #fff;
+        }
+
+        /* 现在是不是好多了 */
+        /* 让我们继续吧 */
+        /* 这么大的区域用来码代码有点浪费 */
+        /* 还是添加一个窗口区域吧 */
+        .wrap {
+            width: 500px;
+            height: 600px;
+            border: 1px solid #fff;
+            position: absolute;
+            top: 50px;
+            left: 750px;
+        }
+
+        /* 好像有点不对劲 */
+        /* 代码好像爆格了 */
+        /* take it easy */
+        .wrap {
+            overflow: hidden;
+        }
+
+        /* 现在应该搞定了 */
+        /* 让我们继续下一步吧 */
+        /* 首先我需要一个按钮 */
+        .button{
+            width:100px;
+            height:50px;
+            background-color:#ff0000;
+            content:'sdfdsf';
+        }
+    </style>
+</head>
+
+<body class="transition">
+    <div id="wrap" class="wrap transition">
+
+        <div id="show" class="show transition"></div>
+
+
+    </div>
+
+    <div class="button transition">
+
+    </div>
+
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <!-- <script src="https://cdn.bootcss.com/jquery-resize/1.1/jquery.ba-resize.min.js"></script> -->
+    <script>
+        var wrap = document.getElementById('wrap');
+        var show = document.getElementById('show');
+
+        var style = document.getElementsByTagName('style')[1];
+        // style.innerHTML='';
+        var cssText = style.innerHTML;
+        console.log(cssText);
+        console.log(style);
+        var reg = /[{};]/;
+        var str = cssText;
+        var styleStr = '';
+        var showStr = '';
+        // var chat="1";
+
+
+
+
+        var length = str.length;
+        var strIndex = 0;
+        var pat = /(body&|\*\b)/;
+        for (var i = 0; i < str.length; i++) {
+            console.log(i + ':' + str[i]);
+        }
+
+
+        var timeOut = setInterval(() => {
+            if (strIndex == length - 1) {
+                // console.log(showStr);
+                // $(show).css({
+                //     'background-color': '#333',
+                //     'position': 'relative',
+                //     'color': '#fff',
+                // })
+                // wrap.scrollTop = wrap.scrollHeight;
+                clearInterval(timeOut);
+
+            }
+            styleStr += [str[strIndex]];
+            showStr += [str[strIndex]];
+            if (reg.test(str[strIndex])) {
+                showStr += '<br>';
+                if ((str[strIndex + 10] != '}') && (str[strIndex + 10] != '.') && (str[strIndex + 11] != '/')) {
+                    showStr += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+                }
+                // var newIndex = strIndex + 1;
+                // while (1) {
+                //     console.log(showStr[newIndex]);
+                //     if (showStr[newIndex]) {
+                //         break;
+                //     }
+                // }
+
+
+            }
+            if (str[strIndex] == '/' && str[strIndex - 1] == '*') {
+                showStr += '<br>';
+            }
+            // console.log(showStr);
+            // showStr=showStr.replace(pat,'<span class="red">'+'\$1'+'</span>');
+            show.innerHTML = showStr;
+            style.innerHTML = styleStr;
+
+
+            strIndex++;
+        }, 50);
+    </script>
+</body>
+
+</html>

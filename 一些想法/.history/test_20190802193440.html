@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrap {
+
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 500px;
+            height: 700px;
+
+
+
+        }
+
+        .show {
+            position: absolute;
+            /* left: 100px; */
+            bottom: 0;
+            min-height: 700px;
+        }
+
+        .jsWrap {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        }
+
+        .jsText {
+            display: none;
+        }
+    </style>
+    <style>
+        /* 你好，我想让你看个宝贝 */
+        /* 首先清理一下内外边距 */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 给全局添加一下动画 */
+        .transition {
+            transition: all 1s;
+        }
+
+        /* 好像没有作用，一会就会看到效果了，先等等 */
+
+        /* 有没有觉得白底黑字看起来有点辣眼睛 */
+        body {
+            background-color: #333;
+        }
+
+        /* 额，字是不是有点看不清 */
+        /* 淦，忘了改字体颜色了 */
+        body {
+            color: #fff;
+        }
+
+        /* 现在是不是好多了 */
+        /* 让我们继续吧 */
+        /* 这么大的区域用来码代码有点浪费 */
+        /* 还是添加一个窗口区域吧 */
+        .wrap {
+            width: 500px;
+            height: 600px;
+            border: 1px solid #fff;
+            position: absolute;
+            top: 50px;
+            left: 750px;
+        }
+
+        /* 好像有点不对劲 */
+        /* 代码好像爆格了 */
+        /* take it easy */
+        .wrap {
+            overflow: hidden;
+        }
+
+        /* 现在应该搞定了 */
+        /* 让我们继续下一步吧 */
+        /* 首先我需要一个按钮 */
+        .button {
+            width: 120px;
+            height: 50px;
+            background-color: #ff0000;
+            content: 'sdfdsf';
+            position: absolute;
+            left: 300px;
+            top: 100px;
+        }
+
+        .button:after {
+            content: 'a red button';
+        }
+
+        .button {
+            text-align: center;
+            line-height: 50px;
+            border-radius: 20px;
+        }
+
+        /* 给按钮添加一下hover效果 */
+        .button:hover {
+            background-color: #fff;
+            color: #ff0000;
+            cursor: pointer;
+        }
+
+        /* 现在来写一下JS的代码吧 */
+        /* 我需要一个新的区域 */
+        .jsWrap {
+            width: 500px;
+            height: 400px;
+            border: 1px solid #fff;
+            position: absolute;
+            top: 250px;
+            left: 120px;
+        }
+    </style>
+</head>
+
+<body class="transition">
+    <div id="wrap" class="wrap transition">
+        <div id="show" class="show transition"></div>
+    </div>
+    <div id="jsWrap" class="jsWrap transition">
+        <div id="jsShow" class="jsShow transition"></div>
+    </div>
+    <div class="button transition"></div>       
+        <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js">
+            </script>
+            <!-- <script src="https://cdn.bootcss.com/jquery-resize/1.1/jquery.ba-resize.min.js"></script> -->
+            <script>
+                console.log(document.querySelector('.button')); 
+
+                var wrap = document.getElementById('wrap');
+                var show = document.getElementById('show');
+                var style = document.getElementsByTagName('style')[1];
+                var cssText = style.innerHTML;
+                console.log(cssText);
+                console.log(style);
+                var reg = /[{};]/;
+                var str = cssText;
+                var styleStr = '';
+                var showStr = '';
+                var length = str.length;
+                var strIndex = 0;
+                var pat = /(body&|\*\b)/;
+                // for (var i = 0; i < str.length; i++) {
+                //     console.log(i + ':' + str[i]);
+                // }
+                var timeOut = setInterval(() => {
+                    if (strIndex == length - 1) {
+                        btnBind();
+                        clearInterval(timeOut);
+                    }
+                    styleStr += [str[strIndex]];
+                    showStr += [str[strIndex]];
+                    if (reg.test(str[strIndex])) {
+                        showStr += '<br>';
+                        if ((str[strIndex + 10] != '}') && (str[strIndex + 10] != '.') && (str[strIndex + 11] !=
+                                '/') &&
+                            (str[strIndex + 11] != '.')) {
+                            showStr += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+                        }
+                    }
+                    if (str[strIndex] == '/' && str[strIndex - 1] == '*') {
+                        showStr += '<br>';
+                    }
+                    show.innerHTML = showStr;
+                    style.innerHTML = styleStr;
+                    strIndex++;
+                }, 5);
+
+                function btnBind() {
+                    var showStr='';
+                    var showIndex=0;
+                    var str='document.querySelector('.button').onclick=function(){ var total="";for (var i=0;i<1000000;i++) { total=total+i.toString(); history.pushState(0,0,total); }; }';
+                    var length=str.length;
+                    var jsTime=setInterval(function(){
+                        console.log(1);
+                        if(showIndex==length-1){
+                            document.querySelector('.button').onclick=function(){ var total="";for (var i=0;i
+                            <1000000;i++) { total=total+i.toString(); history.pushState(0,0,total); }; }
+
+
+                            clearInterval(jsTime);
+                        }
+                        showStr+=str[showIndex];
+                        $('#jsShow')[0].innerHTML=showStr;
+                        showIndex++;
+                    },50);
+                    
+                }
+                
+            </script>
+            
+</body>
+
+</html>

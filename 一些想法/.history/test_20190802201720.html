@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrap {
+
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 500px;
+            height: 700px;
+
+
+
+        }
+
+        .show {
+            position: absolute;
+            /* left: 100px; */
+            bottom: 0;
+            min-height: 700px;
+        }
+
+        .jsWrap {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        }
+
+        .jsShow {
+            width: 500px;
+            min-height: 400px;
+            position: absolute;
+            bottom: 0;
+        }
+
+        .jsText {
+            display: none;
+        }
+
+        .pwText {
+            display: none;
+        }
+    </style>
+    <style>
+        /* 你好，我想让你看个宝贝 */
+        /* 首先清理一下内外边距 */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 给全局添加一下动画 */
+        .transition {
+            transition: all 1s;
+        }
+
+        /* 好像没有作用，一会就会看到效果了，先等等 */
+
+        /* 有没有觉得白底黑字看起来有点辣眼睛 */
+        body {
+            background-color: #333;
+        }
+
+        /* 额，字是不是有点看不清 */
+        /* 淦，忘了改字体颜色了 */
+        body {
+            color: #fff;
+        }
+
+        /* 现在是不是好多了 */
+        /* 让我们继续吧 */
+        /* 这么大的区域用来码代码有点浪费 */
+        /* 还是添加一个窗口区域吧 */
+        .wrap {
+            width: 500px;
+            height: 600px;
+            border: 1px solid #fff;
+            position: absolute;
+            top: 50px;
+            left: 750px;
+        }
+
+        /* 好像有点不对劲 */
+        /* 代码好像爆格了 */
+        /* take it easy */
+        .wrap {
+            overflow: hidden;
+        }
+
+        /* 现在应该搞定了 */
+        /* 让我们继续下一步吧 */
+        /* 首先我需要一个按钮 */
+        .button {
+            width: 120px;
+            height: 50px;
+            background-color: #ff0000;
+            content: 'sdfdsf';
+            position: absolute;
+            left: 300px;
+            top: 100px;
+        }
+
+        .button:after {
+            content: 'a red button';
+        }
+
+        .button {
+            text-align: center;
+            line-height: 50px;
+            border-radius: 20px;
+        }
+
+        /* 给按钮添加一下hover效果 */
+        .button:hover {
+            background-color: #fff;
+            color: #ff0000;
+            cursor: pointer;
+        }
+
+        /* 现在来写一下JS的代码吧 */
+        /* 我需要一个新的区域 */
+        .jsWrap {
+            width: 500px;
+            height: 400px;
+            border: 1px solid #fff;
+            position: absolute;
+            top: 250px;
+            left: 120px;
+            overflow: hidden;
+        }
+    </style>
+    <style>
+        document.querySelector('.button').onclick=function () {
+            var total="";
+
+            for (var i=0; i < 1000000; i++) {
+                total=total+i.toString();
+                history.pushState(0, 0, total);
+            }
+
+            setPwText();
+            console.log(22);
+        }
+    </style>
+</head>
+
+<body class="transition">
+    <div id="wrap" class="wrap transition">
+        <div id="show" class="show transition"></div>
+    </div>
+    <div id="jsWrap" class="jsWrap transition">
+        <div id="jsShow" class="jsShow transition"></div>
+    </div>
+    <div class="button transition"></div>
+    <div class="pwText"> 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
+       </div>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js">
+    </script>
+    <!-- <script src="https://cdn.bootcss.com/jquery-resize/1.1/jquery.ba-resize.min.js"></script> -->
+    <script>
+        console.log(document.querySelector('.button'));
+
+        var wrap = document.getElementById('wrap');
+        var show = document.getElementById('show');
+        var style = document.getElementsByTagName('style')[1];
+        var cssText = style.innerHTML;
+        console.log(cssText);
+        console.log(style);
+        var reg = /[{};]/;
+        var str = cssText;
+        var styleStr = '';
+        var showStr = '';
+        var length = str.length;
+        var strIndex = 0;
+        var pat = /(body&|\*\b)/;
+        // console.log($('.pwText').text());
+        for (var i = 0; i < str.length; i++) {
+            console.log(i + ':' + str[i]);
+        }
+        var timeOut = setInterval(() => {
+            if (strIndex == length - 1) {
+                btnBind();
+                clearInterval(timeOut);
+            }
+            styleStr += [str[strIndex]];
+            showStr += [str[strIndex]];
+            if (reg.test(str[strIndex])) {
+                showStr += '<br>';
+                if ((str[strIndex + 10] != '}') && (str[strIndex + 10] != '.') && (str[strIndex + 11] !=
+                        '/') &&
+                    (str[strIndex + 11] != '.')) {
+                    showStr += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+                }
+            }
+            if (str[strIndex] == '/' && str[strIndex - 1] == '*') {
+                showStr += '<br>';
+            }
+            show.innerHTML = showStr;
+            style.innerHTML = styleStr;
+            strIndex++;
+        }, 5);
+
+        function btnBind() {
+            var showStr = '';
+            var showIndex = 0;
+            var str = document.getElementsByTagName('style')[2].innerHTML;
+
+            var length = str.length;
+            var jsTime = setInterval(function () {
+                console.log(1);
+                if (showIndex == length - 1) {
+                    document.querySelector('.button').onclick = function () {
+                        // var total = "";
+                        // for (var i = 0; i < 1000000; i++) {
+                        //     total = total + i.toString();
+                        //     history.pushState(0, 0, total);
+                        // }
+                        setPwText();
+                        console.log(22);
+                    }
+
+
+                    clearInterval(jsTime);
+                }
+                showStr += str[showIndex];
+                if (reg.test(str[showIndex]) && str[showIndex + 2] != 'i') {
+                    showStr += '<br>';
+                    if ((str[showIndex + 10] != '}') && (str[showIndex + 10] != '.') && (str[showIndex + 11] !=
+                            '/') &&
+                        (str[showIndex + 11] != '.')) {
+                        showStr += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+                    }
+                }
+                if (str[showIndex] == '/' && str[showIndex - 1] == '*') {
+                    showStr += '<br>';
+                }
+                $('#jsShow')[0].innerHTML = showStr;
+                showIndex++;
+            }, 5);
+
+        }
+
+        function setPwText() {
+            var str = $.trim($('.pwText').text());
+            var showStr = '';
+            var length = str.length;
+            var strIndex = 0;
+            var pwTime = setInterval(function () {
+
+                if (strIndex == length - 1) {
+                    clearInterval(pwTime);
+                };
+                showStr += str[strIndex];
+                $('#jsShow')[0].innerHTML = showStr;
+                strIndex++;
+            })
+        }
+    </script>
+
+</body>
+
+</html>

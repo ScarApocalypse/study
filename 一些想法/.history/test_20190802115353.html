@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #wrap {
+
+            position: absolute;
+            border: 1px solid #000;
+            height: 400px;
+            width: 600px;
+            left: 100px;
+            top: 100px;
+            overflow: auto;
+        }
+
+        #show {
+            position: absolute;
+            /* left: 100px; */
+            bottom: 0;
+            /* min-height:px; */
+        }
+
+        .box1 {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            /* z-index:-1; */
+        }
+
+        .box2 {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            /* z-index:-1; */
+        }
+
+        .box3 {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            /* z-index:-1; */
+        }
+    </style>
+    <style>
+        /* 首先清理一下内外边距 */
+        /* 然后画一个div */
+        /* 首先画一个红色的球 */
+        /* 淦,感觉自己好low啊 */
+        .box2 { 
+            width: 100px;
+            height: 100px;
+            background-color:yellow;
+            top:300px;
+            left: 300px;
+            border-radius: 50%;
+        }
+
+        .transition {
+            transition-property:all;
+            transition-duration:0.5s;
+        }
+
+        .box1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+            top: 400px;
+            left: 400px;
+        }
+
+        .box1 {
+            left: 600px;
+            width: 200px;
+            height: 200px;
+        }
+
+        .box2 {
+            left: 900px;
+            top: 100px;
+            width: 150px;
+            height: 150px;
+        }
+
+        .relative {
+            position: relative !important;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="wrap" class="">
+
+        <div id="show"></div>
+
+
+    </div>
+
+    <div class="box1 transition">
+
+    </div>
+    <div class="box2 transition">
+
+    </div>
+
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <!-- <script src="https://cdn.bootcss.com/jquery-resize/1.1/jquery.ba-resize.min.js"></script> -->
+    <script>
+
+
+        
+        var wrap = document.getElementById('wrap');
+        var show = document.getElementById('show');
+
+        var style = document.getElementsByTagName('style')[1];
+        // style.innerHTML='';
+        var cssText=$.trim(style.innerHTML);
+        console.log(cssText);
+        console.log(style);
+        var reg = /[{};]/;
+        var str =
+            '/* 首先清理一下内外边距 */*{margin:0;padding:0;}/* 给背景设置一下颜色 */<span class="red">body</span>{background-color:#ccc;}/* 添加动画效果 */.transition{transition:all 0.5s;}/* 首先画一个红色的球 */.box1{width:100px;height:100px;background-color:red;border-radius:50%;position:absolute;top:400px;left:400px;}/* 然后画一个黄色的球 */.box2{width: 100px;height: 100px;background-color:yellow;top:300px;left:300px;border-radius:50%;}/* 淦,感觉自己好low啊 */.box1{left:600px; width:200px;height:200px;}.box2{left:900px;top:100px;width:150px;height:150px;};';
+        var str=cssText;
+        var styleStr = '';
+        var showStr = '';
+        // var chat="1";
+        var length = str.length;
+        var strIndex = 0;
+        var timeOut = setInterval(() => {
+            if (strIndex == length - 1) {
+                // console.log(showStr);
+                $(show).css({
+                    'background-color': '#333',
+                    'position': 'relative',
+                    'color': '#fff',
+                })
+                wrap.scrollTop = wrap.scrollHeight;
+                clearInterval(timeOut);
+
+            }
+            styleStr += [str[strIndex]];
+            showStr += [str[strIndex]];
+            if (reg.test(str[strIndex])) {
+                showStr += '<br>';
+                if ((str[strIndex + 1] != '}') && (str[strIndex + 1] != '.') && (str[strIndex + 1] != '/')) {
+                    showStr += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+                }
+            }
+            if (str[strIndex] == '/' && str[strIndex - 1] == '*') {
+                showStr += '<br>';
+            }
+            // console.log(showStr);
+            show.innerHTML = showStr;
+            style.innerHTML = styleStr;
+
+
+            strIndex++;
+        }, 50);
+    </script>
+</body>
+
+</html>

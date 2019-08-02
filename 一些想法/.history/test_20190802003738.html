@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            position:absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="show"></div>
+    <div class="box transition">
+
+    </div>
+    <script>
+        var show = document.getElementById('show');
+        var style = document.getElementsByTagName('style')[0];
+        console.log(style);
+        var reg = /[{};]/;
+        var str = '*{margin:0;padding:0;}.box{width:100px;height:100px;background-color:red;transition:all 0.5s;}';
+        var styleStr = '';
+        var showStr = '';
+        // var chat="1";
+        var length = str.length;
+        var strIndex = 0;
+        var timeOut = setInterval(() => {
+            if (strIndex == length - 1) {
+                console.log(showStr);
+                clearInterval(timeOut);
+
+            }
+            styleStr += [str[strIndex]];
+            showStr += [str[strIndex]];
+            if (reg.test(str[strIndex])) {
+                showStr += '<br>';
+                if (str[strIndex + 1] != '}' && str[strIndex + 1] != '.') {
+                    showStr += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+                }
+            }
+
+            // console.log(showStr);
+            show.innerHTML = showStr;
+            style.innerHTML=styleStr;
+
+
+            strIndex++;
+        }, 100);
+    </script>
+</body>
+
+</html>
